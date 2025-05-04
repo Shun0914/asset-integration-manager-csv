@@ -1,0 +1,3 @@
+"""
+Asset Integration Manager バックエンドアプリケーション
+"""
