@@ -12,6 +12,7 @@ import PortfolioTable from './components/Portfolio/PortfolioTable';
 import PortfolioSummary from './components/Portfolio/PortfolioSummary';
 import SectorPieChart from './components/Charts/SectorPieChart';
 import ProfitLossChart from './components/Charts/ProfitLossChart';
+import GPTAdvicePanel from './components/GPT/GPTAdvicePanel';
 
 function App() {
   // ポートフォリオデータの状態
@@ -53,6 +54,10 @@ function App() {
                 <Box sx={{ flex: 1, minWidth: '300px' }}>
                   <ProfitLossChart />
                 </Box>
+              </Box>
+
+              <Box sx={{ mt: 3 }}>
+                <GPTAdvicePanel />
               </Box>
 
               <Box sx={{ mt: 3 }}>

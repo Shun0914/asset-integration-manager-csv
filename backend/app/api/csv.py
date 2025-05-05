@@ -16,8 +16,9 @@ from app.models.portfolio import CSVUploadResponse, PortfolioData
 logger = logging.getLogger(__name__)
 
 # ルーターの設定
+# main.pyで/apiプレフィックスが追加されるため、ここでは/csvのみを指定
 router = APIRouter(
-    prefix="/api/csv",
+    prefix="/csv",
     tags=["csv"],
     responses={
         404: {"description": "Not found"},

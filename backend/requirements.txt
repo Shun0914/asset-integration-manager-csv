@@ -4,3 +4,6 @@ uvicorn==0.23.2
 python-multipart==0.0.6
 pydantic==2.4.2
 pydantic-settings==2.0.3  # BaseSettings用のパッケージ
+
+# OpenAI API
+openai==1.3.0  # 最新のOpenAIライブラリを使用

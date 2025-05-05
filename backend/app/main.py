@@ -32,8 +32,8 @@ app.add_middleware(
     allow_headers=settings.CORS_ALLOW_HEADERS,
 )
 
-# APIルーターの登録
-app.include_router(api_router)
+# APIルーターの登録（明示的なプレフィックスを追加）
+app.include_router(api_router, prefix="/api")
 
 # ルートエンドポイント
 @app.get("/")

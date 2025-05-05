@@ -157,3 +157,20 @@ class CSVUploadResponse(BaseModel):
     message: str = Field(..., description="処理結果メッセージ")
     data: Optional[PortfolioData] = Field(None, description="解析結果データ")
     error: Optional[str] = Field(None, description="エラーメッセージ（失敗時）")
+
+
+# GPTアドバイス関連のモデル
+class GPTAdviceRequest(BaseModel):
+    """GPTアドバイスリクエストのモデル"""
+    portfolio_data: PortfolioData = Field(..., description="ポートフォリオデータ")
+    custom_prompt: Optional[str] = Field(None, description="カスタムプロンプト（オプション）")
+    model: Optional[str] = Field("gpt-4", description="使用するGPTモデル")
+
+
+class GPTAdviceResponse(BaseModel):
+    """GPTアドバイスレスポンスのモデル"""
+    success: bool = Field(..., description="処理の成功可否")
+    advice: Optional[str] = Field(None, description="アドバイステキスト")
+    model: Optional[str] = Field(None, description="使用されたGPTモデル")
+    timestamp: Optional[str] = Field(None, description="タイムスタンプ")
+    error: Optional[str] = Field(None, description="エラーメッセージ（失敗時）")

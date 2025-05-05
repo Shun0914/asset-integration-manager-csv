@@ -126,5 +126,46 @@ export const analyzePortfolio = async (portfolioData) => {
   }
 };
 
+/**
+ * GPTによるポートフォリオアドバイスを取得する
+ * @param {Object} portfolioData - ポートフォリオデータ
+ * @param {string} [customPrompt] - カスタムプロンプト（オプション）
+ * @param {string} [model='gpt-4'] - 使用するGPTモデル（オプション）
+ * @returns {Promise<Object>} GPTからのアドバイス
+ */
+export const getGPTAdvice = async (portfolioData, customPrompt = null, model = 'gpt-4') => {
+  try {
+    const requestData = {
+      portfolio_data: portfolioData,
+      custom_prompt: customPrompt,
+      model: model
+    };
+
+    const response = await apiClient.post('/gpt/advice', requestData);
+    return response.data;
+  } catch (error) {
+    // エラーハンドリング
+    if (error.response) {
+      return {
+        success: false,
+        message: error.response.data.message || 'GPTアドバイスの取得に失敗しました。',
+        error: error.response.data.error || error.message
+      };
+    } else if (error.request) {
+      return {
+        success: false,
+        message: 'サーバーからの応答がありません。ネットワーク接続を確認してください。',
+        error: 'NO_RESPONSE'
+      };
+    } else {
+      return {
+        success: false,
+        message: 'リクエストの送信に失敗しました。',
+        error: error.message
+      };
+    }
+  }
+};
+
 // エクスポートするAPIクライアント（将来の拡張用）
 export default apiClient;
